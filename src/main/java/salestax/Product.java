@@ -1,10 +1,10 @@
 package salestax;
 
 public class Product {
-    private String category;
+    public String category;
     public String name;
-    private double price;
-    private int quontity;
+    public double price;
+    public int quontity;
 
     public Product(String category,String name, double price, int quontity) {
         this.category = category;
@@ -15,5 +15,16 @@ public class Product {
 
     public double getPrice() {
         return price * quontity;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "category=" + category + '\'' +
+                ", name=" + name +
+                ", price=" + price +
+                ",quontity="+ quontity+
+                '}';
     }
 }
