@@ -6,10 +6,11 @@ import salestax.ProductFactory;
 public class Client {
     public static void main(String[] args) {
         ProductFactory productFactory = new ProductFactory();
-        productFactory.addProduct("book","java",20.0,1);
-        productFactory.addProduct("medical", "ac lock 300",2.50,5);
+        productFactory.addProduct("book","java",20.0,1, false);
+        productFactory.addProduct("medical", "ac lock 300",2.50,5,false);
         for (Product product: productFactory.getProducts()){
             System.out.println(product);
         }
+
     }
 }

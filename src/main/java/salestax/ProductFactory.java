@@ -5,9 +5,11 @@ import java.util.List;
 
 public class ProductFactory {
     private List<Product> products = new ArrayList<>();
-   public ProductFactory addProduct(String category, String name, double price, int quontity){
-        Product product = new Product(category,name,price,quontity);
+
+    public ProductFactory addProduct(String category, String name, double price, int quontity, boolean imported) {
+        Product product = new Product(category, name, price, quontity, imported);
         products.add(product);
+        System.out.println(product.getPrice());
         return this;
     }
 
