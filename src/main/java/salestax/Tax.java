@@ -8,7 +8,7 @@ public class Tax {
 
     double getTax(boolean imported, double price, boolean taxable) {
         if (imported) {
-            taxAmount += (IMPORT_DUTY * price) / 100;
+            taxAmount += IMPORT_DUTY * price / 100;
             return getTax(price, taxable);
         }
         return getTax(price, taxable);
@@ -16,7 +16,7 @@ public class Tax {
 
     private double getTax(double price, boolean taxable) {
         if (taxable) {
-            return taxAmount + (BASIC_TAX_RATE * price) / 100;
+            return taxAmount + ((BASIC_TAX_RATE * price) / 100);
         }
         return taxAmount;
 

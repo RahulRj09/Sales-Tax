@@ -11,8 +11,8 @@ public class ShoppingCart {
     public ShoppingCart addProduct(String category, String name, double price, int quontity, boolean imported, boolean taxable) {
         Product product = new Product(category, name, price, quontity, imported, taxable);
         products.add(product);
-        totalAmount += product.getPrice();
         totalTaxAmount += product.getTaxAmount();
+        totalAmount += product.getPrice();
         return this;
     }
 
@@ -20,11 +20,10 @@ public class ShoppingCart {
         return products;
     }
 
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
     public double getTotalTaxAmount() {
         return totalTaxAmount;
+    }
+    public double getTotalAmount() {
+        return totalAmount;
     }
 }

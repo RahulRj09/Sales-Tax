@@ -9,7 +9,6 @@ public class Product {
     private int quantity;
     private boolean imported;
     private boolean taxable;
-    private double taxAmount = 0;
 
     public Product(String category, String name, double price, int quantity, boolean imported, boolean taxable) {
         this.category = category;
@@ -19,17 +18,17 @@ public class Product {
         this.imported = imported;
         this.taxable = taxable;
     }
+    public double getTaxAmount() {
+        Tax tax = new Tax();
+        double taxAmount = tax.getTax(imported, price * quantity, taxable);
+        this.price += taxAmount;
+        return taxAmount;
+    }
 
     double getPrice() {
-        Tax tax = new Tax();
-        this.taxAmount = tax.getTax(imported, price * quantity, taxable);
-        this.price += this.taxAmount;
         return this.price;
     }
 
-    public double getTaxAmount() {
-        return this.taxAmount;
-    }
 
 
     @Override
