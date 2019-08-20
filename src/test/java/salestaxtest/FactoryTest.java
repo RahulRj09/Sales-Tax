@@ -25,4 +25,11 @@ public class FactoryTest {
         factory.addProduct("BOOK","java",20.0,1,false);
         assertEquals(expectedTotalAmount,factory.getTotalAmount(),0);
     }
+    @Test
+    public void itShouldBeGiveTotalTaxAmount(){
+        double expectedTotalTaxAmount = 1.499;
+        Factory factory = new Factory();
+        factory.addProduct("music", "CD",14.99,1,false);
+        assertEquals(expectedTotalTaxAmount,factory.getTotalTax(),0);
+    }
 }
