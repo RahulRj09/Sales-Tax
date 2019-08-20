@@ -10,7 +10,7 @@ public class Tax {
     private List<ExemptProductCategory> exemptProductCategory = Arrays.asList(ExemptProductCategory.values());
     private double totalTax = 0;
 
-    public double getTax(boolean imported, double price, String category) {
+    double getTax(boolean imported, double price, String category) {
         if (imported) {
             totalTax += (IMPORT_DUTY * price) / 100;
             return getTax(price, category);

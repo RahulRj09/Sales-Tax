@@ -6,21 +6,21 @@ public class Product {
     private String category;
     private String name;
     private double price;
-    private int quontity;
+    private int quantity;
     private boolean imported;
     private double tax = 0;
 
-    public Product(String category, String name, double price, int quontity, boolean imported) {
+    public Product(String category, String name, double price, int quantity, boolean imported) {
         this.category = category.toUpperCase();
         this.name = name;
         this.price = price;
-        this.quontity = quontity;
+        this.quantity = quantity;
         this.imported = imported;
     }
 
     double getPrice() {
         Tax tax = new Tax();
-        this.tax = tax.getTax(imported, price * quontity, category);
+        this.tax = tax.getTax(imported, price * quantity, category);
         this.price += this.tax;
         return this.price;
     }
@@ -36,7 +36,7 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Double.compare(product.price, price) == 0 &&
-                quontity == product.quontity &&
+                quantity == product.quantity &&
                 imported == product.imported &&
                 Objects.equals(category, product.category) &&
                 Objects.equals(name, product.name);
@@ -48,7 +48,7 @@ public class Product {
                 "category=" + category +
                 ", name=" + name +
                 ", price=" + this.price +
-                ",quontity=" + quontity +
+                ",quantity=" + quantity +
                 '}';
     }
 }
