@@ -12,7 +12,7 @@ public class Product {
     private double taxAmount = 0;
 
     public Product(String category, String name, double price, int quantity, boolean imported, boolean taxable) {
-        this.category = category.toUpperCase();
+        this.category = category;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -28,7 +28,7 @@ public class Product {
     }
 
     public double getTaxAmount() {
-        return taxAmount;
+        return this.taxAmount;
     }
 
 
@@ -46,11 +46,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "category=" + category +
-                ", name=" + name +
-                ", price=" + this.price +
-                ",quantity=" + quantity +
-                '}';
+        return "Product { " +
+                " category = " + category +
+                " , name = " + name +
+                " , price = " + this.price +
+                " , quantity = " + quantity +
+                " }";
     }
 }

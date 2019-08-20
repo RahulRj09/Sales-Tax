@@ -4,11 +4,11 @@ package salestax;
 public class Tax {
     private final int BASIC_TAX_RATE = 10;
     private final int IMPORT_DUTY = 5;
-    private double totalTax = 0;
+    private double taxAmount = 0;
 
     double getTax(boolean imported, double price, boolean taxable) {
         if (imported) {
-            totalTax += (IMPORT_DUTY * price) / 100;
+            taxAmount += (IMPORT_DUTY * price) / 100;
             return getTax(price, taxable);
         }
         return getTax(price, taxable);
@@ -16,9 +16,9 @@ public class Tax {
 
     private double getTax(double price, boolean taxable) {
         if (taxable) {
-            return totalTax + (BASIC_TAX_RATE * price) / 100;
+            return taxAmount + (BASIC_TAX_RATE * price) / 100;
         }
-        return totalTax;
+        return taxAmount;
 
     }
 
