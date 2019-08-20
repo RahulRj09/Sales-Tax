@@ -8,6 +8,7 @@ public class Product {
     private double price;
     private int quontity;
     private boolean imported;
+    private  double tax = 0;
 
     public Product(String category, String name, double price, int quontity, boolean imported) {
         this.category = category.toUpperCase();
@@ -19,7 +20,13 @@ public class Product {
 
     double getPrice() {
         Tax tax = new Tax();
-        return tax.getPrice(imported, price * quontity, category);
+        this.tax = tax.getTax(imported, price * quontity, category);
+        this.price += this.tax;;
+        return this.price;
+    }
+
+    public double getTax() {
+        return tax;
     }
 
 
@@ -40,7 +47,7 @@ public class Product {
         return "Product{" +
                 "category=" + category +
                 ", name=" + name +
-                ", price=" + price +
+                ", price=" + this.price +
                 ",quontity=" + quontity +
                 '}';
     }

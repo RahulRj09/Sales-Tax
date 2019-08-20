@@ -12,6 +12,7 @@ public class Client {
         for (Product product : factory.getProducts()) {
             System.out.println(product);
         }
-
+        System.out.println("Sales Tax - "+ factory.getTotalTax());
+        System.out.println("Total - "+factory.getTotalAmount());
     }
 }

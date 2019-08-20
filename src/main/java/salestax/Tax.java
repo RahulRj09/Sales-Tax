@@ -8,19 +8,20 @@ public class Tax {
     private final int BASIC_TAX_RATE = 10;
     private final int IMPORT_DUTY = 5;
     private List<ProductCategory> productCategory = Arrays.asList(ProductCategory.values());
+    private double totalTax = 0;
 
-    public double getPrice(boolean imported, double price, String category) {
+    public double getTax(boolean imported, double price, String category) {
         if (imported) {
-            return getPrice(price + (IMPORT_DUTY * price) / 100, category);
+            return getTax(totalTax + (IMPORT_DUTY * price) / 100, category);
         }
-        return getPrice(price, category);
+        return getTax(price, category);
     }
 
-    private double getPrice(double price, String category) {
+    private double getTax(double price, String category) {
         if (productCategory.toString().contains(category)) {
-            return price;
+            return totalTax;
         }
-        return price + (BASIC_TAX_RATE * price) / 100;
+        return totalTax + (BASIC_TAX_RATE * price) / 100;
     }
 
 }
