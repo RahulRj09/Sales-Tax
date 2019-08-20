@@ -18,4 +18,11 @@ public class FactoryTest {
         factory.addProduct("BOOK","java",20.0,1,false);
         assertEquals(expectedProduct,factory.getProducts());
     }
+    @Test
+    public void itShouldBeGiveTotalAmount(){
+        double expectedTotalAmount = 20.0;
+        Factory factory = new Factory();
+        factory.addProduct("BOOK","java",20.0,1,false);
+        assertEquals(expectedTotalAmount,factory.getTotalAmount(),0);
+    }
 }
