@@ -12,7 +12,7 @@ public class ShoppingCart {
         Product product = new Product(category, name, price, quontity, imported);
         products.add(product);
         totalAmount += product.getPrice();
-        totalTaxAmount += product.getTax();
+        totalTaxAmount += product.getTaxAmount();
         return this;
     }
 

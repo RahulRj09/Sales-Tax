@@ -8,7 +8,7 @@ public class Product {
     private double price;
     private int quantity;
     private boolean imported;
-    private double tax = 0;
+    private double taxAmount = 0;
 
     public Product(String category, String name, double price, int quantity, boolean imported) {
         this.category = category.toUpperCase();
@@ -20,13 +20,13 @@ public class Product {
 
     double getPrice() {
         Tax tax = new Tax();
-        this.tax = tax.getTax(imported, price * quantity, category);
-        this.price += this.tax;
+        this.taxAmount = tax.getTax(imported, price * quantity, category);
+        this.price += this.taxAmount;
         return this.price;
     }
 
-    public double getTax() {
-        return tax;
+    public double getTaxAmount() {
+        return taxAmount;
     }
 
 
