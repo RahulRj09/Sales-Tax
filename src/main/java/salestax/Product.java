@@ -1,7 +1,5 @@
 package salestax;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 public class Product {
@@ -10,9 +8,6 @@ public class Product {
     private double price;
     private int quontity;
     private boolean imported;
-    public List productCategory = Arrays.asList(ProductCategory.values());
-    final int BASIC_TAX_RATE = 10;
-    final int IMPORT_DUTY = 5;
 
     public Product(String category, String name, double price, int quontity, boolean imported) {
         this.category = category.toUpperCase();
@@ -23,22 +18,11 @@ public class Product {
     }
 
     double getPrice() {
-        return getPrice(imported);
+        Tax tax = new Tax();
+        return tax.getPrice(imported,price*quontity, category);
     }
 
-    private double getPrice(boolean imported) {
-        if (imported) {
-            return getPrice(price + (IMPORT_DUTY * price) / 100);
-        }
-        return getPrice(price * quontity);
-    }
 
-    private double getPrice(double price) {
-        if (productCategory.contains(category)) {
-            return price;
-        }
-        return price + (BASIC_TAX_RATE * price) / 100;
-    }
 
     @Override
     public boolean equals(Object o) {
