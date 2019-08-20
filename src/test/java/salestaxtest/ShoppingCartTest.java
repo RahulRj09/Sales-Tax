@@ -30,6 +30,6 @@ public class ShoppingCartTest {
         double expectedTotalTaxAmount = 1.499;
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addProduct("music", "CD",14.99,1,false);
-        assertEquals(expectedTotalTaxAmount, shoppingCart.getTotalTax(),0);
+        assertEquals(expectedTotalTaxAmount, shoppingCart.getTotalTaxAmount(),0);
     }
 }
