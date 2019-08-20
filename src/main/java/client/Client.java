@@ -6,9 +6,9 @@ import salestax.ShoppingCart;
 public class Client {
     public static void main(String[] args) {
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addProduct("book", "java", 12.49, 1, false);
-        shoppingCart.addProduct("food", "chocolate bar", 0.85, 1, false);
-        shoppingCart.addProduct("music", "CD",14.99,1,false);
+        shoppingCart.addProduct("book", "java", 12.49, 1, false,false);
+        shoppingCart.addProduct("food", "chocolate bar", 0.85, 1, false,false);
+        shoppingCart.addProduct("music", "CD",14.99,1,false,true);
         for (Product product : shoppingCart.getProducts()) {
             System.out.println(product);
         }
