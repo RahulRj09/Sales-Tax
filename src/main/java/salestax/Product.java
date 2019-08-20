@@ -19,9 +19,8 @@ public class Product {
 
     double getPrice() {
         Tax tax = new Tax();
-        return tax.getPrice(imported,price*quontity, category);
+        return tax.getPrice(imported, price * quontity, category);
     }
-
 
 
     @Override
