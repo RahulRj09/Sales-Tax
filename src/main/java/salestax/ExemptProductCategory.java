@@ -1,5 +1,5 @@
 package salestax;
 
-enum ProductCategory {
+enum ExemptProductCategory {
     BOOK, FOOD, MEDICAL
 }
