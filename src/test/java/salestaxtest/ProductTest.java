@@ -8,14 +8,14 @@ import static org.junit.Assert.assertEquals;
 public class ProductTest {
     @Test
     public void itShouldBeGiveTaxAmount(){
-        double expectedTotalTaxAmount = 1.499;
+        double expectedTaxAmount = 1.499;
         Product product = new Product("music", "CD",14.99,1,false,true);
-        assertEquals(expectedTotalTaxAmount, product.getTaxAmount(),0);
+        assertEquals(expectedTaxAmount, product.getTaxAmount(),0);
     }
     @Test
     public void itShouldBeSingleProductPrice(){
-        double expectedTotalTaxAmount = 14.99;
+        double expectedPriceAmount = 14.99;
         Product product = new Product("music", "CD",14.99,1,false,true);
-        assertEquals(expectedTotalTaxAmount, product.getPrice(),0);
+        assertEquals(expectedPriceAmount, product.getPrice(),0);
     }
 }

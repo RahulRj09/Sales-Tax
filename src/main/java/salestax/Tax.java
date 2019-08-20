@@ -6,7 +6,7 @@ public class Tax {
     private final int IMPORT_DUTY = 5;
     private double taxAmount = 0;
 
-    double getTax(boolean imported, double price, boolean taxable) {
+   public double getTax(boolean imported, double price, boolean taxable) {
         if (imported) {
             taxAmount += IMPORT_DUTY * price / 100;
             return getTax(price, taxable);
