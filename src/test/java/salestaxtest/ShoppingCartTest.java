@@ -26,6 +26,12 @@ public class ShoppingCartTest {
         assertEquals(expectedTotalAmount, shoppingCart.getTotalAmount(),0);
     }
     @Test
+    public void itShouldBeGiveTaxAmount(){
+        double expectedTotalTaxAmount = 1.499;
+        Product product = new Product("music", "CD",14.99,1,false,true);
+        assertEquals(expectedTotalTaxAmount, product.getTaxAmount(),0);
+    }
+    @Test
     public void itShouldBeGiveTotalTaxAmount(){
         double expectedTotalTaxAmount = 1.499;
         ShoppingCart shoppingCart = new ShoppingCart();
