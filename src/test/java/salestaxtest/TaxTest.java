@@ -16,4 +16,11 @@ public class TaxTest {
         Tax tax = new Tax();
         assertEquals(expectedImportDutyTaxAmount,tax.getTax(true,14.99,false),0);
     }
+    @Test
+    public void itShouldBeGiveBasicTaxRateAmountAndImportDutyTaxAmount(){
+        double expectedTotalTaxAmount =2.2485;
+        Tax tax = new Tax();
+        assertEquals(expectedTotalTaxAmount,tax.getTax(true,14.99,true),0);
+    }
+
 }
