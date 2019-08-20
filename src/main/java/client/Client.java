@@ -1,14 +1,14 @@
 package client;
 
 import salestax.Product;
-import salestax.ProductFactory;
+import salestax.Factory;
 
 public class Client {
     public static void main(String[] args) {
-        ProductFactory productFactory = new ProductFactory();
-        productFactory.addProduct("book","java",20.0,1, false);
-        productFactory.addProduct("medical", "ac lock 300",2.50,5,false);
-        for (Product product: productFactory.getProducts()){
+        Factory factory = new Factory();
+        factory.addProduct("book", "java", 12.49, 1, false);
+        factory.addProduct("food", "chocolate bar", 0.85, 1, false);
+        for (Product product : factory.getProducts()) {
             System.out.println(product);
         }
 
