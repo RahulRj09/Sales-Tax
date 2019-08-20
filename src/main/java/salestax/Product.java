@@ -25,7 +25,7 @@ public class Product {
         return taxAmount;
     }
 
-    double getPrice() {
+    public double getPrice() {
         return this.price;
     }
 

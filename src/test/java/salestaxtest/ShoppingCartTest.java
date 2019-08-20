@@ -20,17 +20,13 @@ public class ShoppingCartTest {
     }
     @Test
     public void itShouldBeGiveTotalAmount(){
-        double expectedTotalAmount = 20.0;
+        double expectedTotalAmount = 34.99;
         ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addProduct("music", "CD",14.99,1,false,false);
         shoppingCart.addProduct("BOOK","java",20.0,1,false,false);
         assertEquals(expectedTotalAmount, shoppingCart.getTotalAmount(),0);
     }
-    @Test
-    public void itShouldBeGiveTaxAmount(){
-        double expectedTotalTaxAmount = 1.499;
-        Product product = new Product("music", "CD",14.99,1,false,true);
-        assertEquals(expectedTotalTaxAmount, product.getTaxAmount(),0);
-    }
+
     @Test
     public void itShouldBeGiveTotalTaxAmount(){
         double expectedTotalTaxAmount = 1.499;
