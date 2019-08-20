@@ -22,7 +22,6 @@ public class Product {
         Tax tax = new Tax();
         this.tax = tax.getTax(imported, price * quontity, category);
         this.price += this.tax;
-        ;
         return this.price;
     }
 

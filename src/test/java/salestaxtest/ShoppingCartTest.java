@@ -1,0 +1,35 @@
+package salestaxtest;
+
+import org.junit.Test;
+import salestax.ShoppingCart;
+import salestax.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+public class ShoppingCartTest {
+    @Test
+    public void productShouldBeAdd(){
+        List<Product> expectedProduct = new ArrayList<>();
+        Product product = new Product("BOOK","java",20.0,1,false);
+        expectedProduct.add(product);
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addProduct("BOOK","java",20.0,1,false);
+        assertEquals(expectedProduct, shoppingCart.getProducts());
+    }
+    @Test
+    public void itShouldBeGiveTotalAmount(){
+        double expectedTotalAmount = 20.0;
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addProduct("BOOK","java",20.0,1,false);
+        assertEquals(expectedTotalAmount, shoppingCart.getTotalAmount(),0);
+    }
+    @Test
+    public void itShouldBeGiveTotalTaxAmount(){
+        double expectedTotalTaxAmount = 1.499;
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addProduct("music", "CD",14.99,1,false);
+        assertEquals(expectedTotalTaxAmount, shoppingCart.getTotalTax(),0);
+    }
+}

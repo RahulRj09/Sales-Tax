@@ -12,7 +12,8 @@ public class Tax {
 
     public double getTax(boolean imported, double price, String category) {
         if (imported) {
-            return getTax(totalTax + (IMPORT_DUTY * price) / 100, category);
+            totalTax += (IMPORT_DUTY * price) / 100;
+            return getTax(price, category);
         }
         return getTax(price, category);
     }
