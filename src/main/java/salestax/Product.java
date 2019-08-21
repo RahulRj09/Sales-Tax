@@ -1,7 +1,5 @@
 package salestax;
 
-import java.util.Objects;
-
 public class Product {
     private String category;
     private String name;
@@ -39,9 +37,7 @@ public class Product {
         Product product = (Product) o;
         return Double.compare(product.price, price) == 0 &&
                 quantity == product.quantity &&
-                imported == product.imported &&
-                Objects.equals(category, product.category) &&
-                Objects.equals(name, product.name);
+                imported == product.imported;
     }
 
     @Override
