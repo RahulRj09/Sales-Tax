@@ -18,7 +18,7 @@ public class Client {
         cart.add(product, 1);
         cart.add(product1, 1);
         TaxCalculator taxCalculator = new TaxCalculator();
-        Map<Product, Double> items= taxCalculator.getTax(cart);
+        Map<Product, Double> items = taxCalculator.getTax(cart);
 
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         receiptGenerator.generateReceipt(items, 1);
@@ -26,7 +26,7 @@ public class Client {
 
         for (Map<String, String> aReceipt : receipt) {
             for (Map.Entry<String, String> demo : aReceipt.entrySet()) {
-                System.out.print(demo.getKey() + " - " + demo.getValue()+" ");
+                System.out.print(demo.getKey() + " - " + demo.getValue() + " ");
             }
             System.out.println("\n");
         }

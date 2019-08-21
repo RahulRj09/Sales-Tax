@@ -10,7 +10,7 @@ public class TaxCalculator {
     private Map<Product, Double> items = new HashMap<>();
 
 
-    public Map<Product,Double> getTax(Cart cart) {
+    public Map<Product, Double> getTax(Cart cart) {
 
         Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Integer> product : products.entrySet()) {
