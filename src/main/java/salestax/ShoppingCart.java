@@ -23,6 +23,7 @@ public class ShoppingCart {
     public double getTotalTaxAmount() {
         return totalTaxAmount;
     }
+
     public double getTotalAmount() {
         return totalAmount;
     }

@@ -18,9 +18,10 @@ public class Product {
         this.imported = imported;
         this.taxable = taxable;
     }
+
     public double getTaxAmount() {
-        Tax tax = new Tax();
-        double taxAmount = tax.getTax(imported, price * quantity, taxable);
+        TaxCalculator taxCalculator = new TaxCalculator();
+        double taxAmount = taxCalculator.getTax(imported, price * quantity, taxable);
         this.price += taxAmount;
         return taxAmount;
     }
@@ -28,7 +29,6 @@ public class Product {
     public double getPrice() {
         return this.price;
     }
-
 
 
     @Override

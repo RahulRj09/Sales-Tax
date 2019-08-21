@@ -12,7 +12,7 @@ public class Client {
         for (Product product : shoppingCart.getProducts()) {
             System.out.println(product);
         }
-        System.out.println("Sales Tax - " + shoppingCart.getTotalTaxAmount());
+        System.out.println("Sales TaxCalculator - " + shoppingCart.getTotalTaxAmount());
         System.out.println("Total - " + shoppingCart.getTotalAmount());
     }
 }
