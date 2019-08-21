@@ -13,12 +13,6 @@ public class Product {
         this.imported = imported;
     }
 
-    public double getPrice() {
-        this.price += this.taxAmount;
-        return this.price;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
