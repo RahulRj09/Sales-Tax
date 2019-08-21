@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ReceiptGenerator {
+
     public double totalTaxAmount = 0;
     public double totalPriceAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();

@@ -9,9 +9,6 @@ public class TaxCalculator {
     private List<String> exemptCategory = Arrays.asList("BOOK", "FOOD", "MEDICAL");
     private Map<Product, Double> items = new HashMap<>();
 
-    public Map<Product, Double> getItems() {
-        return items;
-    }
 
     public void getTax(Cart cart) {
 
@@ -35,5 +32,9 @@ public class TaxCalculator {
 
     double getTax(double price, int taxRate) {
         return (price * taxRate) / 100;
+    }
+
+    public Map<Product, Double> getItems() {
+        return items;
     }
 }
