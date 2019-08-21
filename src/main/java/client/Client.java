@@ -1,18 +1,12 @@
 package client;
 
-import salestax.Product;
-import salestax.ShoppingCart;
+
+import salestax.ShopKeeper;
+
 
 public class Client {
     public static void main(String[] args) {
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addProduct("book", "java", 12.49, 1, false, false);
-        shoppingCart.addProduct("food", "chocolate bar", 0.85, 1, false, false);
-        shoppingCart.addProduct("music", "CD", 14.99, 1, false, true);
-        for (Product product : shoppingCart.getProducts()) {
-            System.out.println(product);
-        }
-        System.out.println("Sales TaxCalculator - " + shoppingCart.getTotalTaxAmount());
-        System.out.println("Total - " + shoppingCart.getTotalAmount());
+        ShopKeeper shopKeeper = new ShopKeeper();
+        shopKeeper.shopKeeper("book", "java", 12.49, 1, false);
     }
 }
