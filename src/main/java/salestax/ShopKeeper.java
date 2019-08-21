@@ -1,17 +1,17 @@
 package salestax;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ShopKeeper {
-    private Map<Product, Integer> cart = new HashMap<>();
 
-    public ShopKeeper shopKeeper(String category,String name, double price, int quantity, boolean imported) {
-        Product product = new Product(category,name,price,imported);
-        cart.put(product,quantity);
+    public ShopKeeper shopKeeper(String category, String name, double price, int quantity, boolean imported) {
+        Product product = new Product(category, name, price, imported);
+        Cart cart = new Cart();
         TaxCalculator taxCalculator = new TaxCalculator();
-        taxCalculator.getTax(cart);
+        Map<Product, Integer> items = cart.add(product, quantity);
+        taxCalculator.getTax(items);
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
+
         return this;
     }
 }
