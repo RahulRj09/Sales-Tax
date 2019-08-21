@@ -10,7 +10,7 @@ public class TaxCalculator {
     private Map<Product, Double> items = new HashMap<>();
 
 
-    public void getTax(Cart cart) {
+    public Map<Product,Double> getTax(Cart cart) {
 
         Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Integer> product : products.entrySet()) {
@@ -24,6 +24,7 @@ public class TaxCalculator {
             }
             items.put(product.getKey(), taxAmount);
         }
+        return items;
     }
 
     private double getPrice(Map.Entry<Product, Integer> item) {
@@ -32,9 +33,5 @@ public class TaxCalculator {
 
     double getTax(double price, int taxRate) {
         return (price * taxRate) / 100;
-    }
-
-    public Map<Product, Double> getItems() {
-        return items;
     }
 }

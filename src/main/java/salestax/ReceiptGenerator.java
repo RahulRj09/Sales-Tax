@@ -11,8 +11,7 @@ public class ReceiptGenerator {
     public double totalPriceAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();
 
-    public void generateReceipt(TaxCalculator taxCalculator, int quantity) {
-        Map<Product, Double> items = taxCalculator.getItems();
+    public void generateReceipt(Map<Product, Double> items, int quantity) {
         for (Map.Entry<Product, Double> item : items.entrySet()) {
             Map<String, String> product = new HashMap<>();
             product.put("name", item.getKey().name);

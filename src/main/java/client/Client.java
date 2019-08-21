@@ -18,10 +18,10 @@ public class Client {
         cart.add(product, 1);
         cart.add(product1, 1);
         TaxCalculator taxCalculator = new TaxCalculator();
-        taxCalculator.getTax(cart);
+        Map<Product, Double> items= taxCalculator.getTax(cart);
 
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
-        receiptGenerator.generateReceipt(taxCalculator, 1);
+        receiptGenerator.generateReceipt(items, 1);
         List<Map<String, String>> receipt = receiptGenerator.getReceipt();
 
         for (Map<String, String> aReceipt : receipt) {
