@@ -7,16 +7,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ProductTest {
     @Test
-    public void itShouldBeGiveTaxAmount() {
-        double expectedTaxAmount = 1.499;
+    public void itShouldBeGiveTheNameOfProduct() {
+        String expected = "CD";
         Product product = new Product("music", "CD", 14.99, false);
-        assertEquals(expectedTaxAmount, product.getTaxAmount(), 0);
+        assertEquals(expected, product.name);
     }
 
-    @Test
-    public void itShouldBeSingleProductPrice() {
-        double expectedPriceAmount = 14.99;
-        Product product = new Product("music", "CD", 14.99, false);
-        assertEquals(expectedPriceAmount, product.getPrice(), 0);
-    }
 }
