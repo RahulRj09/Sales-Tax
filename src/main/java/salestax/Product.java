@@ -13,12 +13,6 @@ public class Product {
         this.imported = imported;
     }
 
-    public double getTaxAmount() {
-        TaxCalculator taxCalculator = new TaxCalculator();
-        this.taxAmount = taxCalculator.getTax(imported, price * quantity, taxable);
-        return this.taxAmount;
-    }
-
     public double getPrice() {
         this.price += this.taxAmount;
         return this.price;
