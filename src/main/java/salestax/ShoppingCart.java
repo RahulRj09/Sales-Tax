@@ -9,7 +9,7 @@ public class ShoppingCart {
     private double totalTaxAmount = 0;
 
     public ShoppingCart addProduct(String category, String name, double price, int quontity, boolean imported, boolean taxable) {
-        Product product = new Product(category, name, price, quontity, imported, taxable);
+        Product product = new Product(category, name, price, imported);
         products.add(product);
         totalTaxAmount += product.getTaxAmount();
         totalAmount += product.getPrice();

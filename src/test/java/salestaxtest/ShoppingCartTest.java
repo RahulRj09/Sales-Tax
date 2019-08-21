@@ -13,7 +13,7 @@ public class ShoppingCartTest {
     @Test
     public void productShouldBeAdd() {
         List<Product> expectedProduct = new ArrayList<>();
-        Product product = new Product("BOOK", "java", 20.0, 1, false, false);
+        Product product = new Product("BOOK", "java", 20.0, false);
         expectedProduct.add(product);
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addProduct("BOOK", "java", 20.0, 1, false, false);

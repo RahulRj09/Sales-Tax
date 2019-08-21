@@ -9,14 +9,14 @@ public class ProductTest {
     @Test
     public void itShouldBeGiveTaxAmount() {
         double expectedTaxAmount = 1.499;
-        Product product = new Product("music", "CD", 14.99, 1, false, true);
+        Product product = new Product("music", "CD", 14.99, false);
         assertEquals(expectedTaxAmount, product.getTaxAmount(), 0);
     }
 
     @Test
     public void itShouldBeSingleProductPrice() {
         double expectedPriceAmount = 14.99;
-        Product product = new Product("music", "CD", 14.99, 1, false, true);
+        Product product = new Product("music", "CD", 14.99, false);
         assertEquals(expectedPriceAmount, product.getPrice(), 0);
     }
 }

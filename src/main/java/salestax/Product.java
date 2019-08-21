@@ -4,18 +4,13 @@ public class Product {
     private String category;
     private String name;
     private double price;
-    private int quantity;
     private boolean imported;
-    private double taxAmount;
-    private boolean taxable;
 
-    public Product(String category, String name, double price, int quantity, boolean imported, boolean taxable) {
+    public Product(String category, String name, double price, boolean imported) {
         this.category = category;
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
         this.imported = imported;
-        this.taxable = taxable;
     }
 
     public double getTaxAmount() {
