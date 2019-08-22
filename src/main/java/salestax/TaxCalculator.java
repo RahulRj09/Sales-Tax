@@ -9,7 +9,6 @@ public class TaxCalculator {
     private List<ExemptCategory> exemptCategory = Arrays.asList(ExemptCategory.values());
     private Map<Product, Double> productsTax = new HashMap<>();
 
-
     public Map<Product, Double> getTaxOfMap(Cart cart) {
         Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Integer> product : products.entrySet()) {

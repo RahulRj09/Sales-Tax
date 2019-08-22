@@ -36,7 +36,7 @@ public class ReceiptGenerator {
         return price + tax;
     }
 
-    public void receiptPrinter() {
+    public void print() {
         for (Map<String, String> aReceipt : this.receipt) {
             for (Map.Entry<String, String> item : aReceipt.entrySet()) {
                 System.out.print(item.getKey() + " - " + item.getValue() + " ");
