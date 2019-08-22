@@ -6,7 +6,7 @@ import java.util.*;
 public class TaxCalculator {
     private final double BASIC_TAX_RATE = 0.1;
     private final double IMPORT_DUTY = 0.05;
-    private List<Category> category = Arrays.asList(Category.values());
+    private List<Category> category = Arrays.asList(Category.BOOK,Category.FOOD,Category.MEDICAL);
     private Map<Product, Double> productsTax = new HashMap<>();
 
     public Map<Product, Double> getTaxOfMap(Cart cart) {
@@ -32,7 +32,7 @@ public class TaxCalculator {
     }
 
     private boolean isTaxable(Product key) {
-        return category.toString().contains(key.getCategory().toUpperCase());
+        return category.toString().contains(key.getCategory().name());
     }
 
     private double calculateTax(double price, double taxRate) {

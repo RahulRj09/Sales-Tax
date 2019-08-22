@@ -1,19 +1,19 @@
 package salestax;
 
 public class Product {
-    private String category;
+    private Category category;
     private String name;
     private double price;
     private boolean imported;
 
-    public Product(String category, String name, double price, boolean imported) {
+    public Product(Category category, String name, double price, boolean imported) {
         this.category = category;
         this.name = name;
         this.price = price;
         this.imported = imported;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 

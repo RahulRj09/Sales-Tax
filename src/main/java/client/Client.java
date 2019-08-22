@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class Client {
     public static void main(String[] args) {
-        Product product = new Product("book", "java", 12, false);
-        Product product1 = new Product("book", "java", 12, true);
-        Product product2 = new Product("music", "CD", 14.99, true);
+        Product product = new Product(Category.FOOD, "java", 12, false);
+        Product product1 = new Product(Category.FOOD, "java", 12, true);
+        Product product2 = new Product(Category.OTHER, "CD", 14.99, true);
 
         Cart cart = new Cart();
         cart.add(product, 4);

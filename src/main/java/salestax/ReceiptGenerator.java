@@ -24,7 +24,7 @@ public class ReceiptGenerator {
     private Map<String, String> getItemDetails(Map.Entry<Product, Double> product, int quantity, double price) {
         Product key = product.getKey();
         Map<String, String> item = new HashMap<>();
-        item.put("category", key.getCategory());
+        item.put("category", key.getCategory().name());
         item.put("name", key.getName());
         item.put("imported", String.valueOf(key.isImported()));
         item.put("price", String.valueOf(calculateCost(product.getValue(), price)));

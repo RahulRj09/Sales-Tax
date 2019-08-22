@@ -1,5 +1,5 @@
 package salestax;
 
-enum Category {
-    BOOK, FOOD, MEDICAL,OTHERS
+public enum Category {
+    BOOK, FOOD, MEDICAL,OTHER
 }
