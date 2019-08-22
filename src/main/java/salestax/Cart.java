@@ -10,7 +10,7 @@ public class Cart {
         this.items.put(product, quantity);
     }
 
-    public Map<Product,Integer> getItems() {
+    public Map<Product, Integer> getItems() {
         return items;
     }
 }

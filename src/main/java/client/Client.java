@@ -8,18 +8,19 @@ import java.util.Map;
 
 public class Client {
     public static void main(String[] args) {
-        Product product = new Product("book", "java", 12.49, false);
-        Product product1 = new Product("book", "java", 12.49, true);
+        Product product = new Product("book", "java", 12, false);
+        Product product1 = new Product("book", "java", 12, true);
 
         Cart cart = new Cart();
         cart.add(product, 4);
         cart.add(product1, 2);
 
         TaxCalculator taxCalculator = new TaxCalculator();
-        Map<Product, Double> itemsWithTax = taxCalculator.getTax(cart);
+        Map<Product, Double> products = taxCalculator.getTax(cart);
 
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
-        receiptGenerator.generateReceipt(itemsWithTax, cart);
+        receiptGenerator.generateReceipt(products, cart);
+
         List<Map<String, String>> receipt = receiptGenerator.getReceipt();
 
         for (Map<String, String> aReceipt : receipt) {
@@ -28,8 +29,8 @@ public class Client {
             }
             System.out.println("\n");
         }
-        System.out.println("Sales Tax - "+receiptGenerator.getTotalTaxAmount());
-        System.out.println("Total - "+receiptGenerator.getTotalAllItemsCostAmount());
+        System.out.println("Sales Tax - " + receiptGenerator.getTotalTaxAmount());
+        System.out.println("Total - " + receiptGenerator.getTotalAllItemsCostAmount());
     }
 
 }

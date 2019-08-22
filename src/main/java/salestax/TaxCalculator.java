@@ -7,7 +7,7 @@ public class TaxCalculator {
     private final double BASIC_TAX_RATE = 0.1;
     private final double IMPORT_DUTY = 0.05;
     private List<String> exemptCategory = Arrays.asList("BOOK", "FOOD", "MEDICAL");
-    private Map<Product, Double> itemsWithTax = new HashMap<>();
+    private Map<Product, Double> products = new HashMap<>();
 
 
     public Map<Product, Double> getTax(Cart cart) {
@@ -21,9 +21,9 @@ public class TaxCalculator {
             if (!exemptCategory.contains(item.getKey().getCategory().toUpperCase())) {
                 taxAmount += getTax(price, BASIC_TAX_RATE);
             }
-           itemsWithTax.put(item.getKey(), taxAmount);
+            products.put(item.getKey(), taxAmount);
         }
-        return itemsWithTax;
+        return products;
     }
 
     private double getPrice(Map.Entry<Product, Integer> item) {
