@@ -14,4 +14,8 @@ public class CostCalculator {
     private double getPrice(Map.Entry<Product, Integer> product) {
        return product.getKey().price* product.getValue();
     }
+
+    public Map<Product,Integer> costCalculateWithTax(Map<Product, Double> products){
+        return null;
+    }
 }

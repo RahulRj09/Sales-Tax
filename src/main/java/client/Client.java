@@ -21,6 +21,8 @@ public class Client {
         TaxCalculator taxCalculator = new TaxCalculator();
         Map<Product, Double> items = taxCalculator.getTax(costCalculator.costCalculate(cart));
 
+        costCalculator.costCalculateWithTax(items);
+
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         receiptGenerator.generateReceipt(items, 1);
         List<Map<String, String>> receipt = receiptGenerator.getReceipt();

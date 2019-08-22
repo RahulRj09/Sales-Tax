@@ -23,6 +23,7 @@ public class TaxCalculator {
         }
         return items;
     }
+
     double getTax(double price, double taxRate) {
         return price * taxRate;
     }
