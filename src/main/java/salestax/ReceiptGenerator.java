@@ -12,9 +12,9 @@ public class ReceiptGenerator {
     public void generateReceipt(Map<Product, Double> items, int quantity) {
         for (Map.Entry<Product, Double> item : items.entrySet()) {
             Map<String, String> product = new HashMap<>();
-            product.put("name", item.getKey().name);
-            product.put("category", item.getKey().category);
-            product.put("imported", String.valueOf(item.getKey().imported));
+            product.put("name", item.getKey().getName());
+            product.put("category", item.getKey().getCategory());
+            product.put("imported", String.valueOf(item.getKey().isImported()));
             double price = getPrice(quantity, item);
             product.put("price", String.valueOf(getPriceWithTax(item, price)));
             product.put("quantity", String.valueOf(quantity));
@@ -27,7 +27,7 @@ public class ReceiptGenerator {
     }
 
     private double getPrice(int quantity, Map.Entry<Product, Double> item) {
-        return item.getKey().price * quantity;
+        return item.getKey().getPrice() * quantity;
 
     }
 

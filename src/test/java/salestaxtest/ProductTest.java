@@ -10,7 +10,7 @@ public class ProductTest {
     public void itShouldBeGiveTheNameOfProduct() {
         String expected = "CD";
         Product product = new Product("music", "CD", 14.99, false);
-        assertEquals(expected, product.name);
+        assertEquals(expected, product.getName());
     }
 
 }

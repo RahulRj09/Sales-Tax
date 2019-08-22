@@ -15,11 +15,10 @@ public class TaxCalculator {
         for (Map.Entry<Product, Integer> item : items.entrySet()) {
             double taxAmount = 0;
             double price = getPrice(item);
-            if (item.getKey().imported) {
+            if (item.getKey().isImported()) {
                 taxAmount += getTax(price, IMPORT_DUTY);
-                System.out.println(taxAmount);
             }
-            if (!exemptCategory.contains(item.getKey().category.toUpperCase())) {
+            if (!exemptCategory.contains(item.getKey().getCategory().toUpperCase())) {
                 taxAmount += getTax(price, BASIC_TAX_RATE);
             }
            itemsWithTax.put(item.getKey(), taxAmount);
@@ -28,7 +27,7 @@ public class TaxCalculator {
     }
 
     private double getPrice(Map.Entry<Product, Integer> item) {
-        return item.getKey().price * item.getValue();
+        return item.getKey().getPrice() * item.getValue();
     }
 
     private double getTax(double price, double taxRate) {
