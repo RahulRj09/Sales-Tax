@@ -6,19 +6,24 @@ import java.util.List;
 import java.util.Map;
 
 public class ReceiptGenerator {
-
+    double totalTaxAmount = 0;
+    double totalAllItemsCostAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();
 
-    public void generateReceipt(Map<Product, Double> items, int quantity) {
-        for (Map.Entry<Product, Double> item : items.entrySet()) {
-            Map<String, String> product = new HashMap<>();
-            product.put("name", item.getKey().getName());
-            product.put("category", item.getKey().getCategory());
-            product.put("imported", String.valueOf(item.getKey().isImported()));
-            double price = getPrice(quantity, item);
-            product.put("price", String.valueOf(getPriceWithTax(item, price)));
-            product.put("quantity", String.valueOf(quantity));
-            receipt.add(product);
+    public void generateReceipt(Map<Product, Double> itemsWithTax, Cart cart) {
+        Map<Product, Integer> items = cart.getItems();
+        for (Map.Entry<Product, Double> itemWithTax : itemsWithTax.entrySet()) {
+            int quantity = items.get(itemWithTax.getKey());
+            Map<String, String> item = new HashMap<>();
+            item.put("name", itemWithTax.getKey().getName());
+            item.put("category", itemWithTax.getKey().getCategory());
+            item.put("imported", String.valueOf(itemWithTax.getKey().isImported()));
+            double price = getPrice(quantity, itemWithTax);
+            item.put("price", String.valueOf(getPriceWithTax(itemWithTax, price)));
+            item.put("quantity", String.valueOf(quantity));
+            totalTaxAmount +=itemWithTax.getValue();
+            totalAllItemsCostAmount+=getPriceWithTax(itemWithTax, price);
+            receipt.add(item);
         }
     }
 
@@ -33,5 +38,13 @@ public class ReceiptGenerator {
 
     public List<Map<String, String>> getReceipt() {
         return receipt;
+    }
+
+    public double getTotalTaxAmount() {
+        return totalTaxAmount;
+    }
+
+    public double getTotalAllItemsCostAmount() {
+        return totalAllItemsCostAmount;
     }
 }
