@@ -3,7 +3,6 @@ package client;
 
 import salestax.*;
 
-import java.util.List;
 import java.util.Map;
 
 public class Client {
@@ -21,7 +20,5 @@ public class Client {
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         receiptGenerator.generateReceipt(productsTax, cart);
         receiptGenerator.receiptPrinter();
-
     }
-
 }

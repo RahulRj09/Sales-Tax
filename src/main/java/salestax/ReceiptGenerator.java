@@ -11,9 +11,9 @@ public class ReceiptGenerator {
     private List<Map<String, String>> receipt = new ArrayList<>();
 
     public void generateReceipt(Map<Product, Double> productsTax, Cart cart) {
-        Map<Product, Integer> items = cart.getProducts();
+        Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Double> product : productsTax.entrySet()) {
-            int quantity = items.get(product.getKey());
+            int quantity = products.get(product.getKey());
             Map<String, String> item = new HashMap<>();
             double price = product.getKey().getPrice() * quantity;
             item.put("category", product.getKey().getCategory());
@@ -28,14 +28,12 @@ public class ReceiptGenerator {
     }
 
     public void receiptPrinter() {
-
         for (Map<String, String> aReceipt : this.receipt) {
             for (Map.Entry<String, String> item : aReceipt.entrySet()) {
                 System.out.print(item.getKey() + " - " + item.getValue() + " ");
             }
             System.out.println("\n");
         }
-
         System.out.println("Sales Tax - " + this.totalTaxAmount);
         System.out.println("Total - " + this.totalAllItemsCostAmount);
     }
