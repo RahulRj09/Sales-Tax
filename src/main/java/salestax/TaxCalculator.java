@@ -19,7 +19,8 @@ public class TaxCalculator {
             if (key.isImported()) {
                 taxAmount += getTax(price, IMPORT_DUTY);
             }
-            if (!exemptCategory.contains(key.getCategory().toUpperCase())) {
+            boolean taxable = exemptCategory.contains(key.getCategory().toUpperCase());
+            if (!taxable) {
                 taxAmount += getTax(price, BASIC_TAX_RATE);
             }
             productsTax.put(key, taxAmount);
