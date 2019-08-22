@@ -17,13 +17,13 @@ public class ReceiptGenerator {
 
             double price = product.getKey().getPrice() * quantity;
 
-            receipt.add(getProductDetails(product, quantity, price));
+            receipt.add(getItemDetails(product, quantity, price));
             totalTaxAmount += product.getValue();
             totalAllItemsCostAmount += calculateCost(product.getValue(), price);
         }
     }
 
-    private Map<String, String> getProductDetails(Map.Entry<Product, Double> product, int quantity, double price) {
+    private Map<String, String> getItemDetails(Map.Entry<Product, Double> product, int quantity, double price) {
         Product key = product.getKey();
         Map<String, String> item = new HashMap<>();
         item.put("category", key.getCategory());
