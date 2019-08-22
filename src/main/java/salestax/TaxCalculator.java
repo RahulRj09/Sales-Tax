@@ -24,10 +24,10 @@ public class TaxCalculator {
     private double getTaxAmount(Product key, double price) {
         double taxAmount = 0;
         if (key.isImported()) {
-            taxAmount += price * IMPORT_DUTY;
+            taxAmount += calculateTax(price, IMPORT_DUTY);
         }
         if (!isTaxable(key)) {
-            taxAmount += price * BASIC_TAX_RATE;
+            taxAmount += calculateTax(price, BASIC_TAX_RATE);
         }
         return taxAmount;
     }
@@ -36,4 +36,7 @@ public class TaxCalculator {
         return exemptCategory.contains(key.getCategory().toUpperCase());
     }
 
+    private double calculateTax(double price, double taxRate) {
+        return price * taxRate;
+    }
 }
