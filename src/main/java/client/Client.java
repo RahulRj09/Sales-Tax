@@ -1,10 +1,7 @@
 package client;
 
 
-import salestax.Cart;
-import salestax.Product;
-import salestax.ReceiptGenerator;
-import salestax.TaxCalculator;
+import salestax.*;
 
 import java.util.List;
 import java.util.Map;
@@ -15,10 +12,14 @@ public class Client {
         Product product1 = new Product("book", "java", 12.49, true);
 
         Cart cart = new Cart();
-        cart.add(product, 1);
+        cart.add(product, 2);
         cart.add(product1, 1);
+
+        CostCalculator costCalculator = new CostCalculator();
+
+
         TaxCalculator taxCalculator = new TaxCalculator();
-        Map<Product, Double> items = taxCalculator.getTax(cart);
+        Map<Product, Double> items = taxCalculator.getTax(costCalculator.costCalculate(cart));
 
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         receiptGenerator.generateReceipt(items, 1);
