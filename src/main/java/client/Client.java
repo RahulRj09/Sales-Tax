@@ -16,21 +16,12 @@ public class Client {
         cart.add(product1, 2);
 
         TaxCalculator taxCalculator = new TaxCalculator();
-        Map<Product, Double> products = taxCalculator.getTax(cart);
+        Map<Product, Double> productsTax = taxCalculator.getTax(cart);
 
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
-        receiptGenerator.generateReceipt(products, cart);
+        receiptGenerator.generateReceipt(productsTax, cart);
+        receiptGenerator.receiptPrinter();
 
-        List<Map<String, String>> receipt = receiptGenerator.getReceipt();
-
-        for (Map<String, String> aReceipt : receipt) {
-            for (Map.Entry<String, String> demo : aReceipt.entrySet()) {
-                System.out.print(demo.getKey() + " - " + demo.getValue() + " ");
-            }
-            System.out.println("\n");
-        }
-        System.out.println("Sales Tax - " + receiptGenerator.getTotalTaxAmount());
-        System.out.println("Total - " + receiptGenerator.getTotalAllItemsCostAmount());
     }
 
 }

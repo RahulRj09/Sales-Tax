@@ -10,37 +10,38 @@ public class ReceiptGenerator {
     private double totalAllItemsCostAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();
 
-    public void generateReceipt(Map<Product, Double> products, Cart cart) {
-        Map<Product, Integer> items = cart.getItems();
-        for (Map.Entry<Product, Double> product : products.entrySet()) {
+    public void generateReceipt(Map<Product, Double> productsTax, Cart cart) {
+        Map<Product, Integer> items = cart.getProducts();
+        for (Map.Entry<Product, Double> product : productsTax.entrySet()) {
             int quantity = items.get(product.getKey());
             Map<String, String> item = new HashMap<>();
             double price = product.getKey().getPrice() * quantity;
             item.put("category", product.getKey().getCategory());
             item.put("name", product.getKey().getName());
             item.put("imported", String.valueOf(product.getKey().isImported()));
-            item.put("price", String.valueOf(costCalculate(product, price)));
+            item.put("price", String.valueOf(calculateCost(product.getValue(), price)));
             item.put("quantity", String.valueOf(quantity));
             totalTaxAmount += product.getValue();
-            totalAllItemsCostAmount += costCalculate(product, price);
+            totalAllItemsCostAmount += calculateCost(product.getValue(), price);
             receipt.add(item);
         }
     }
 
-    private double costCalculate(Map.Entry<Product, Double> item, double price) {
-        return price + item.getValue();
+    public void receiptPrinter() {
+
+        for (Map<String, String> aReceipt : this.receipt) {
+            for (Map.Entry<String, String> item : aReceipt.entrySet()) {
+                System.out.print(item.getKey() + " - " + item.getValue() + " ");
+            }
+            System.out.println("\n");
+        }
+
+        System.out.println("Sales Tax - " + this.totalTaxAmount);
+        System.out.println("Total - " + this.totalAllItemsCostAmount);
     }
 
-
-    public List<Map<String, String>> getReceipt() {
-        return receipt;
+    private double calculateCost(Double tax, double price) {
+        return price + tax;
     }
 
-    public double getTotalTaxAmount() {
-        return totalTaxAmount;
-    }
-
-    public double getTotalAllItemsCostAmount() {
-        return totalAllItemsCostAmount;
-    }
 }
