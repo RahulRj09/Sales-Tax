@@ -15,19 +15,19 @@ public class ReceiptGenerator {
         for (Map.Entry<Product, Double> product : products.entrySet()) {
             int quantity = items.get(product.getKey());
             Map<String, String> item = new HashMap<>();
-            double price =product.getKey().getPrice() * quantity;
+            double price = product.getKey().getPrice() * quantity;
             item.put("category", product.getKey().getCategory());
             item.put("name", product.getKey().getName());
             item.put("imported", String.valueOf(product.getKey().isImported()));
-            item.put("price", String.valueOf(getPriceWithTax(product, price)));
+            item.put("price", String.valueOf(costCalculate(product, price)));
             item.put("quantity", String.valueOf(quantity));
             totalTaxAmount += product.getValue();
-            totalAllItemsCostAmount += getPriceWithTax(product, price);
+            totalAllItemsCostAmount += costCalculate(product, price);
             receipt.add(item);
         }
     }
 
-    private double getPriceWithTax(Map.Entry<Product, Double> item, double price) {
+    private double costCalculate(Map.Entry<Product, Double> item, double price) {
         return price + item.getValue();
     }
 
