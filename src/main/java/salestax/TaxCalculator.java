@@ -10,18 +10,19 @@ public class TaxCalculator {
     private Map<Product, Double> productsTax = new HashMap<>();
 
 
-    public Map<Product, Double> getTax(Cart cart) {
+    public Map<Product, Double> getTaxOfMap(Cart cart) {
         Map<Product, Integer> products = cart.getProducts();
-        for (Map.Entry<Product, Integer> item : products.entrySet()) {
+        for (Map.Entry<Product, Integer> product : products.entrySet()) {
             double taxAmount = 0;
-            double price = item.getKey().getPrice() * item.getValue();
-            if (item.getKey().isImported()) {
+            Product key = product.getKey();
+            double price = key.getPrice() * product.getValue();
+            if (key.isImported()) {
                 taxAmount += getTax(price, IMPORT_DUTY);
             }
-            if (!exemptCategory.contains(item.getKey().getCategory().toUpperCase())) {
+            if (!exemptCategory.contains(key.getCategory().toUpperCase())) {
                 taxAmount += getTax(price, BASIC_TAX_RATE);
             }
-            productsTax.put(item.getKey(), taxAmount);
+            productsTax.put(key, taxAmount);
         }
         return productsTax;
     }

@@ -14,9 +14,7 @@ public class ReceiptGenerator {
         Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Double> product : productsTax.entrySet()) {
             int quantity = products.get(product.getKey());
-
             double price = product.getKey().getPrice() * quantity;
-
             receipt.add(getItemDetails(product, quantity, price));
             totalTaxAmount += product.getValue();
             totalAllItemsCostAmount += calculateCost(product.getValue(), price);

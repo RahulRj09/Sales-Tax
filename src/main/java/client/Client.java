@@ -15,7 +15,7 @@ public class Client {
         cart.add(product1, 2);
 
         TaxCalculator taxCalculator = new TaxCalculator();
-        Map<Product, Double> productsTax = taxCalculator.getTax(cart);
+        Map<Product, Double> productsTax = taxCalculator.getTaxOfMap(cart);
 
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
         receiptGenerator.generateReceipt(productsTax, cart);

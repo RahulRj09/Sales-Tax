@@ -19,7 +19,7 @@ public class TaxCalculatorTest {
         cart.add(product, 1);
         expectedProductsWithTax.put(product, 5.0);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax, taxCalculator.getTax(cart));
+        assertEquals(expectedProductsWithTax, taxCalculator.getTaxOfMap(cart));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class TaxCalculatorTest {
         cart.add(product, 1);
         expectedProductsWithTax.put(product, 10.0);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax, taxCalculator.getTax(cart));
+        assertEquals(expectedProductsWithTax, taxCalculator.getTaxOfMap(cart));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class TaxCalculatorTest {
         cart.add(product, 1);
         expectedProductsWithTax.put(product, 15.0);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax, taxCalculator.getTax(cart));
+        assertEquals(expectedProductsWithTax, taxCalculator.getTaxOfMap(cart));
     }
 
 }
