@@ -14,7 +14,7 @@ public class TaxCalculator {
         Map<Product, Integer> items = cart.getItems();
         for (Map.Entry<Product, Integer> item : items.entrySet()) {
             double taxAmount = 0;
-            double price = getPrice(item);
+            double price = item.getKey().getPrice() * item.getValue();
             if (item.getKey().isImported()) {
                 taxAmount += getTax(price, IMPORT_DUTY);
             }
@@ -26,9 +26,6 @@ public class TaxCalculator {
         return products;
     }
 
-    private double getPrice(Map.Entry<Product, Integer> item) {
-        return item.getKey().getPrice() * item.getValue();
-    }
 
     private double getTax(double price, double taxRate) {
         return price * taxRate;
