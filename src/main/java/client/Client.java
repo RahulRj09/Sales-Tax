@@ -33,6 +33,6 @@ public class Client {
             }
             System.out.println("\n");
         }
-
+        System.out.println(costCalculator.getTotalTaxAmount());
     }
 }
