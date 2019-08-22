@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ReceiptGenerator {
-    double totalTaxAmount = 0;
-    double totalAllItemsCostAmount = 0;
+    private double totalTaxAmount = 0;
+    private double totalAllItemsCostAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();
 
     public void generateReceipt(Map<Product, Double> products, Cart cart) {
@@ -15,10 +15,10 @@ public class ReceiptGenerator {
         for (Map.Entry<Product, Double> product : products.entrySet()) {
             int quantity = items.get(product.getKey());
             Map<String, String> item = new HashMap<>();
+            double price =product.getKey().getPrice() * quantity;
             item.put("category", product.getKey().getCategory());
             item.put("name", product.getKey().getName());
             item.put("imported", String.valueOf(product.getKey().isImported()));
-            double price = getPrice(quantity, product);
             item.put("price", String.valueOf(getPriceWithTax(product, price)));
             item.put("quantity", String.valueOf(quantity));
             totalTaxAmount += product.getValue();
@@ -31,10 +31,6 @@ public class ReceiptGenerator {
         return price + item.getValue();
     }
 
-    private double getPrice(int quantity, Map.Entry<Product, Double> item) {
-        return item.getKey().getPrice() * quantity;
-
-    }
 
     public List<Map<String, String>> getReceipt() {
         return receipt;
