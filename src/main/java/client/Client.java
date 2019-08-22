@@ -12,7 +12,7 @@ public class Client {
         Product product1 = new Product("book", "java", 12.49, true);
 
         Cart cart = new Cart();
-        cart.add(product, 2);
+        cart.add(product, 1);
         cart.add(product1, 1);
 
         TaxCalculator taxCalculator = new TaxCalculator();
