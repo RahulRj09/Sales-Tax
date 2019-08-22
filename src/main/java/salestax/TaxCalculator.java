@@ -24,7 +24,7 @@ public class TaxCalculator {
         return items;
     }
 
-    double getTax(double price, double taxRate) {
+    private double getTax(double price, double taxRate) {
         return price * taxRate;
     }
 }
