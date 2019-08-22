@@ -14,17 +14,28 @@ public class ReceiptGenerator {
         Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Double> product : productsTax.entrySet()) {
             int quantity = products.get(product.getKey());
-            Map<String, String> item = new HashMap<>();
+
             double price = product.getKey().getPrice() * quantity;
-            item.put("category", product.getKey().getCategory());
-            item.put("name", product.getKey().getName());
-            item.put("imported", String.valueOf(product.getKey().isImported()));
-            item.put("price", String.valueOf(calculateCost(product.getValue(), price)));
-            item.put("quantity", String.valueOf(quantity));
+
+            receipt.add(getProductDetails(product, quantity, price));
             totalTaxAmount += product.getValue();
             totalAllItemsCostAmount += calculateCost(product.getValue(), price);
-            receipt.add(item);
         }
+    }
+
+    private Map<String, String> getProductDetails(Map.Entry<Product, Double> product, int quantity, double price) {
+        Product key = product.getKey();
+        Map<String, String> item = new HashMap<>();
+        item.put("category", key.getCategory());
+        item.put("name", key.getName());
+        item.put("imported", String.valueOf(key.isImported()));
+        item.put("price", String.valueOf(calculateCost(product.getValue(), price)));
+        item.put("quantity", String.valueOf(quantity));
+        return item;
+    }
+
+    private double calculateCost(Double tax, double price) {
+        return price + tax;
     }
 
     public void receiptPrinter() {
@@ -36,10 +47,6 @@ public class ReceiptGenerator {
         }
         System.out.println("Sales Tax - " + this.totalTaxAmount);
         System.out.println("Total - " + this.totalAllItemsCostAmount);
-    }
-
-    private double calculateCost(Double tax, double price) {
-        return price + tax;
     }
 
 }
