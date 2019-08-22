@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
-    private Map<Product, Integer> products = new HashMap<>();
+    private Map<Product, Integer> items = new HashMap<>();
 
     public void add(Product product, int quantity) {
-        this.products.put(product, quantity);
+        this.items.put(product, quantity);
     }
 
-    public Map<Product,Integer> getProducts() {
-        return products;
+    public Map<Product,Integer> getItems() {
+        return items;
     }
 }

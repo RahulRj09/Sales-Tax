@@ -17,6 +17,6 @@ public class CartTest {
         Cart cart = new Cart();
         cart.add(product, 1);
         expectedProducts.put(product, 1);
-        assertEquals(expectedProducts, cart.getProducts());
+        assertEquals(expectedProducts, cart.getItems());
     }
 }

@@ -15,7 +15,7 @@ public class ReceiptGenerator {
             product.put("name", item.getKey().name);
             product.put("category", item.getKey().category);
             product.put("imported", String.valueOf(item.getKey().imported));
-            product.put("price", String.valueOf(item.getKey().price));
+            product.put("price", String.valueOf(item.getKey().price+item.getValue()));
             product.put("quantity", String.valueOf(quantity));
             receipt.add(product);
         }

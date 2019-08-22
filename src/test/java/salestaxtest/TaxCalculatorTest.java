@@ -17,7 +17,7 @@ public class TaxCalculatorTest {
         cart.add(product, 2);
         expectedProductsWithTax.put(product,10.0);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getProducts()));
+        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getItems()));
     }
     @Test
     public void itShouldBeGiveTheBasicTaxAmount(){
@@ -27,7 +27,7 @@ public class TaxCalculatorTest {
         cart.add(product, 1);
         expectedProductsWithTax.put(product,10.0);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getProducts()));
+        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getItems()));
     }
      @Test
     public void itShouldBeGiveTheBasicTaxAmountAndImportedTaxAmountSameTime(){
@@ -37,7 +37,7 @@ public class TaxCalculatorTest {
         cart.add(product, 1);
         expectedProductsWithTax.put(product,15.0);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getProducts()));
+        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getItems()));
     }
 
 }
