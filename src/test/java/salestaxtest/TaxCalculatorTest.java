@@ -29,5 +29,15 @@ public class TaxCalculatorTest {
         TaxCalculator taxCalculator = new TaxCalculator();
         assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getProducts()));
     }
+     @Test
+    public void itShouldBeGiveTheBasicTaxAmountAndImportedTaxAmountSameTime(){
+        Map<Product, Double> expectedProductsWithTax = new HashMap<>();
+        Product product = new Product("music", "cd", 100.0, true);
+        Cart cart = new Cart();
+        cart.add(product, 1);
+        expectedProductsWithTax.put(product,15.0);
+        TaxCalculator taxCalculator = new TaxCalculator();
+        assertEquals(expectedProductsWithTax,taxCalculator.getTax(cart.getProducts()));
+    }
 
 }
