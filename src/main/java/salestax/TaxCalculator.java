@@ -7,40 +7,22 @@ public class TaxCalculator {
     private final double BASIC_TAX_RATE = 0.1;
     private final double IMPORT_DUTY = 0.05;
     private List<Category> category = Arrays.asList(Category.BOOK, Category.FOOD, Category.MEDICAL);
-    private Map<Product, Double> productsTax = new HashMap<>();
 
-    public Map<Product, Double> getTaxOfMap(Cart cart) {
-        Map<Product, Integer> products = cart.getProducts();
-        for (Map.Entry<Product, Integer> product : products.entrySet()) {
-            Product key = product.getKey();
-            double price = getPrice(product, key);
-            double taxAmount = getTaxAmount(key, price);
-            productsTax.put(key, taxAmount);
+    public double calculate(CartItem cartItem) {
+        Product product = cartItem.getProduct();
+        double taxes = 0;
+        double price = cartItem.getPrice();
+        if (product.isImported()) {
+            taxes += getTax(price, IMPORT_DUTY);
         }
-        return productsTax;
-    }
-
-    private double getPrice(Map.Entry<Product, Integer> product, Product key) {
-        return key.getPrice() * product.getValue();
-    }
-
-    private double getTaxAmount(Product key, double price) {
-        double taxAmount = 0;
-
-        if (key.isImported()) {
-            taxAmount += calculateTax(price, IMPORT_DUTY);
+        if (!category.contains(product.getCategory())) {
+            taxes += getTax(price, BASIC_TAX_RATE);
         }
-        if (!isTaxable(key)) {
-            taxAmount += calculateTax(price, BASIC_TAX_RATE);
-        }
-        return taxAmount;
+        return taxes;
     }
 
-    private boolean isTaxable(Product key) {
-        return category.toString().contains(key.getCategory().name());
-    }
-
-    private double calculateTax(double price, double taxRate) {
+    private double getTax(double price, double taxRate) {
         return price * taxRate;
     }
+
 }

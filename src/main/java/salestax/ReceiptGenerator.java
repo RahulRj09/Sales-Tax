@@ -9,26 +9,27 @@ public class ReceiptGenerator {
     private double totalTaxAmount = 0;
     private double totalAllItemsCostAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();
+    public void generateReceipt(Cart cart) {
 
-    public void generateReceipt(Map<Product, Double> productsTax, Cart cart) {
-        Map<Product, Integer> products = cart.getProducts();
-        for (Map.Entry<Product, Double> product : productsTax.entrySet()) {
-            int quantity = products.get(product.getKey());
-            double price = product.getKey().getPrice() * quantity;
-            receipt.add(getReceiptItemDetails(product, quantity, price));
-            totalTaxAmount += product.getValue();
-            totalAllItemsCostAmount += calculateCost(product.getValue(), price);
+        List<CartItem> cartItems = cart.getCartItems();
+        for (CartItem cartItem : cartItems) {
+            double price = cartItem.getPrice();
+            TaxCalculator taxCalculator = new TaxCalculator();
+            double calculatedTax = taxCalculator.calculate(cartItem);
+            totalTaxAmount += calculatedTax;
+            totalAllItemsCostAmount += calculateCost(calculatedTax, price);
+            receipt.add(getReceiptItemDetails(cartItem,calculatedTax,price ));
         }
     }
 
-    private Map<String, String> getReceiptItemDetails(Map.Entry<Product, Double> product, int quantity, double price) {
-        Product key = product.getKey();
+    private Map<String, String> getReceiptItemDetails(CartItem cartItem, double calculatedTax, double price) {
         Map<String, String> item = new HashMap<>();
-        item.put("category", key.getCategory().name());
-        item.put("name", key.getName());
-        item.put("imported", String.valueOf(key.isImported()));
-        item.put("price", String.valueOf(calculateCost(product.getValue(), price)));
-        item.put("quantity", String.valueOf(quantity));
+        Product product = cartItem.getProduct();
+        item.put("category", String.valueOf(product.getCategory()));
+        item.put("name", product.getName());
+        item.put("imported", String.valueOf(product.isImported()));
+        item.put("price", String.valueOf(calculateCost(calculatedTax,price)));
+        item.put("quantity", String.valueOf(cartItem.getQuantity()));
         return item;
     }
 

@@ -3,7 +3,7 @@ package client;
 
 import salestax.*;
 
-import java.util.Map;
+
 
 public class Client {
     public static void main(String[] args) {
@@ -16,11 +16,8 @@ public class Client {
         cart.add(product1, 2);
         cart.add(product2, 1);
 
-        TaxCalculator taxCalculator = new TaxCalculator();
-        Map<Product, Double> productsTax = taxCalculator.getTaxOfMap(cart);
-
         ReceiptGenerator receiptGenerator = new ReceiptGenerator();
-        receiptGenerator.generateReceipt(productsTax, cart);
+        receiptGenerator.generateReceipt(cart);
         receiptGenerator.print();
     }
 }
