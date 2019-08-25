@@ -11,7 +11,7 @@ public class TaxCalculatorTest {
     @Test
     public void itShouldBeGiveTheImportedTaxAmount() {
         Map<Product, Double> expectedProductsWithTax = new HashMap<>();
-        Product product = new Product("Book", "java", 100.0, true);
+        Product product = new Product(Category.BOOK, "java", 100.0, true);
         Cart cart = new Cart();
         cart.add(product, 1);
         expectedProductsWithTax.put(product, 5.0);
@@ -22,7 +22,7 @@ public class TaxCalculatorTest {
     @Test
     public void itShouldBeGiveTheBasicTaxAmount() {
         Map<Product, Double> expectedProductsWithTax = new HashMap<>();
-        Product product = new Product("music", "cd", 100.0, false);
+        Product product = new Product(Category.OTHER, "cd", 100.0, false);
         Cart cart = new Cart();
         cart.add(product, 1);
         expectedProductsWithTax.put(product, 10.0);
@@ -33,7 +33,7 @@ public class TaxCalculatorTest {
     @Test
     public void itShouldBeGiveTheBasicTaxAmountAndImportedTaxAmount() {
         Map<Product, Double> expectedProductsWithTax = new HashMap<>();
-        Product product = new Product("music", "cd", 100.0, true);
+        Product product = new Product(Category.OTHER, "cd", 100.0, true);
         Cart cart = new Cart();
         cart.add(product, 1);
         expectedProductsWithTax.put(product, 15.0);

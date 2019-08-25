@@ -6,9 +6,9 @@ import static org.junit.Assert.assertEquals;
 
 public class ProductTest {
     @Test
-    public void itShouldBeGiveTheNameOfProduct() {
+    public void ShouldBeAbleToGiveTheNameOfProduct() {
         String expected = "CD";
-        Product product = new Product("music", "CD", 14.99, false);
+        Product product = new Product(Category.OTHER, "CD", 14.99, false);
         assertEquals(expected, product.getName());
     }
 
