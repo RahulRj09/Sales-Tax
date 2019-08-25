@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TaxCalculatorTest {
     @Test
-    public void shouldBeAbleToGiveTheImportDutyTaxAmount() {
+    public void shouldBeAbleToGetTheImportDutyTaxAmount() {
         Map<Product, Double> expectedProductsWithTax = new HashMap<>();
         Product product = new Product(Category.BOOK, "java", 100.0, true);
         Cart cart = new Cart();
@@ -20,7 +20,7 @@ public class TaxCalculatorTest {
     }
 
     @Test
-    public void shouldBeAbleToGiveTheBasicTaxAmount() {
+    public void shouldBeAbleToGetTheBasicTaxAmount() {
         Map<Product, Double> expectedProductsWithTax = new HashMap<>();
         Product product = new Product(Category.OTHER, "cd", 100.0, false);
         Cart cart = new Cart();
@@ -31,7 +31,7 @@ public class TaxCalculatorTest {
     }
 
     @Test
-    public void ShouldBeAbleToGiveBothTypeOfTaxAmount() {
+    public void ShouldBeAbleToGetBothTypeOfTaxAmount() {
         Map<Product, Double> expectedProductsWithTax = new HashMap<>();
         Product product = new Product(Category.OTHER, "cd", 100.0, true);
         Cart cart = new Cart();
