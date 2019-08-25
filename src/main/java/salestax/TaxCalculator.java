@@ -22,6 +22,7 @@ public class TaxCalculator {
 
     private double getTaxAmount(Product key, double price) {
         double taxAmount = 0;
+
         if (key.isImported()) {
             taxAmount += calculateTax(price, IMPORT_DUTY);
         }
