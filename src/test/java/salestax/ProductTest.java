@@ -1,7 +1,6 @@
-package salestaxtest;
+package salestax;
 
 import org.junit.Test;
-import salestax.Product;
 
 import static org.junit.Assert.assertEquals;
 

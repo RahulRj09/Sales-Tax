@@ -1,8 +1,6 @@
-package salestaxtest;
+package salestax;
 
 import org.junit.Test;
-import salestax.Cart;
-import salestax.Product;
 
 import java.util.HashMap;
 import java.util.Map;
