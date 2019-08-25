@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CartTest {
     @Test
-    public void ShouldBeAbleToAddProductInCart() {
+    public void shouldBeAbleToAddProductInCart() {
         Map<Product, Integer> expectedProducts = new HashMap<>();
         Product product = new Product(Category.BOOK, "java", 100.0, false);
         Cart cart = new Cart();
