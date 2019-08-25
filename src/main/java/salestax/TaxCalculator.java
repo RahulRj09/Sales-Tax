@@ -13,11 +13,15 @@ public class TaxCalculator {
         Map<Product, Integer> products = cart.getProducts();
         for (Map.Entry<Product, Integer> product : products.entrySet()) {
             Product key = product.getKey();
-            double price = key.getPrice() * product.getValue();
+            double price = getPrice(product, key);
             double taxAmount = getTaxAmount(key, price);
             productsTax.put(key, taxAmount);
         }
         return productsTax;
+    }
+
+    private double getPrice(Map.Entry<Product, Integer> product, Product key) {
+        return key.getPrice() * product.getValue();
     }
 
     private double getTaxAmount(Product key, double price) {
