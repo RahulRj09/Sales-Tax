@@ -15,8 +15,8 @@ public class Client {
         cart.add(product1, 2);
         cart.add(product2, 1);
 
-        ReceiptGenerator receiptGenerator = new ReceiptGenerator();
-        receiptGenerator.generateReceipt(cart);
-        receiptGenerator.print();
+        ReceiptGenerator receiptGenerator = new ReceiptGenerator(new TaxCalculator());
+        Receipt receipt = receiptGenerator.generateReceipt(cart);
+        receipt.print();
     }
 }
