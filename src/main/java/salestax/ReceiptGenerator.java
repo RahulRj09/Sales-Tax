@@ -1,12 +1,9 @@
 package salestax;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ReceiptGenerator {
-    private List<Map<String, String>> receipt = new ArrayList<>();
     private TaxCalculator taxCalculator;
 
     public ReceiptGenerator(TaxCalculator taxCalculator) {
@@ -26,7 +23,7 @@ public class ReceiptGenerator {
             ReceiptItem receiptItem = new ReceiptItem(cartItem, price, calculatedTax);
             receiptItems.add(receiptItem);
         }
-        Receipt receipt = new Receipt(receiptItems,totalTaxAmount, totalAllItemsCostAmount);
+        Receipt receipt = new Receipt(receiptItems, totalTaxAmount, totalAllItemsCostAmount);
         return receipt;
     }
 
