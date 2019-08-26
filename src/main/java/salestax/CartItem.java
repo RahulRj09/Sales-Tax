@@ -1,5 +1,7 @@
 package salestax;
 
+import java.util.Objects;
+
 public class CartItem {
     private Product product;
     private int quantity;
@@ -21,4 +23,12 @@ public class CartItem {
         return quantity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CartItem cartItem = (CartItem) o;
+        return quantity == cartItem.quantity &&
+                Objects.equals(product, cartItem.product);
+    }
 }

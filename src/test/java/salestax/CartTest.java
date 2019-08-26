@@ -2,19 +2,20 @@ package salestax;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class CartTest {
     @Test
     public void shouldBeAbleToAddProductInCart() {
-        Map<Product, Integer> expectedProducts = new HashMap<>();
+       List<CartItem> expectedProducts = new ArrayList<>();
         Product product = new Product(Category.BOOK, "java", 100.0, false);
         Cart cart = new Cart();
-        cart.add(product, 1);
-        expectedProducts.put(product, 1);
-        assertEquals(expectedProducts, cart.getProducts());
+        CartItem cartItem = new CartItem(product,1);
+        cart.add(product,1);
+        expectedProducts.add(cartItem);
+        assertEquals(expectedProducts, cart.getCartItems());
     }
 }

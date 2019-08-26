@@ -17,4 +17,5 @@ public class Cart {
         CartItem cartItem = new CartItem(product, quantity);
         cartItems.add(cartItem);
     }
+
 }
