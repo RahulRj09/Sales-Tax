@@ -2,43 +2,34 @@ package salestax;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static org.junit.Assert.assertEquals;
 
 public class TaxCalculatorTest {
     @Test
     public void shouldBeAbleToGetTheImportDutyTaxAmount() {
-        Map<Product, Double> expectedProductsWithTax = new HashMap<>();
+        double expectedProductsWithTax = 5.0;
         Product product = new Product(Category.BOOK, "java", 100.0, true);
-        Cart cart = new Cart();
-        cart.add(product, 1);
-        expectedProductsWithTax.put(product, 5.0);
+        CartItem cartItem = new CartItem(product,1);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax, taxCalculator.getTaxOfMap(cart));
+        assertEquals(expectedProductsWithTax, taxCalculator.calculate(cartItem),0);
     }
 
     @Test
     public void shouldBeAbleToGetTheBasicTaxAmount() {
-        Map<Product, Double> expectedProductsWithTax = new HashMap<>();
+        double expectedProductsWithTax = 10.0;
         Product product = new Product(Category.OTHER, "cd", 100.0, false);
-        Cart cart = new Cart();
-        cart.add(product, 1);
-        expectedProductsWithTax.put(product, 10.0);
+        CartItem cartItem = new CartItem(product,1);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax, taxCalculator.getTaxOfMap(cart));
+        assertEquals(expectedProductsWithTax, taxCalculator.calculate(cartItem),0);
     }
 
     @Test
     public void ShouldBeAbleToGetBothTypeOfTaxAmount() {
-        Map<Product, Double> expectedProductsWithTax = new HashMap<>();
+       double expectedProductsWithTax = 15.0;
         Product product = new Product(Category.OTHER, "cd", 100.0, true);
-        Cart cart = new Cart();
-        cart.add(product, 1);
-        expectedProductsWithTax.put(product, 15.0);
+        CartItem cartItem = new CartItem(product,1);
         TaxCalculator taxCalculator = new TaxCalculator();
-        assertEquals(expectedProductsWithTax, taxCalculator.getTaxOfMap(cart));
+        assertEquals(expectedProductsWithTax, taxCalculator.calculate(cartItem),0);
     }
 
 }

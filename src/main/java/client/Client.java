@@ -4,7 +4,6 @@ package client;
 import salestax.*;
 
 
-
 public class Client {
     public static void main(String[] args) {
         Product product = new Product(Category.FOOD, "java", 12, false);

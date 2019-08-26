@@ -9,6 +9,7 @@ public class ReceiptGenerator {
     private double totalTaxAmount = 0;
     private double totalAllItemsCostAmount = 0;
     private List<Map<String, String>> receipt = new ArrayList<>();
+
     public void generateReceipt(Cart cart) {
 
         List<CartItem> cartItems = cart.getCartItems();
@@ -18,7 +19,7 @@ public class ReceiptGenerator {
             double calculatedTax = taxCalculator.calculate(cartItem);
             totalTaxAmount += calculatedTax;
             totalAllItemsCostAmount += calculateCost(calculatedTax, price);
-            receipt.add(getReceiptItemDetails(cartItem,calculatedTax,price ));
+            receipt.add(getReceiptItemDetails(cartItem, calculatedTax, price));
         }
     }
 
@@ -28,7 +29,7 @@ public class ReceiptGenerator {
         item.put("category", String.valueOf(product.getCategory()));
         item.put("name", product.getName());
         item.put("imported", String.valueOf(product.isImported()));
-        item.put("price", String.valueOf(calculateCost(calculatedTax,price)));
+        item.put("price", String.valueOf(calculateCost(calculatedTax, price)));
         item.put("quantity", String.valueOf(cartItem.getQuantity()));
         return item;
     }
